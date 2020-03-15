@@ -34,9 +34,9 @@ public class TwoSum {
     }
 
     /**
-     * SolutionImproved
+     * SolutionV2
      */
-    public class SolutionImproved {
+    public class SolutionV2 {
 
         public int[] twoSum(int[] nums, int target) {
 
@@ -52,5 +52,4 @@ public class TwoSum {
         }
     }
 
-    // leetcode submit region end(Prohibit modification and deletion)
 }
