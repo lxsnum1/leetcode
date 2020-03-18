@@ -32,12 +32,41 @@ public class ReverseInteger {
     }
 
     // leetcode submit region begin(Prohibit modification and deletion)
+
+    /**
+     * Solution
+     * 
+     * int type number range : -2^31=-2147483648 ~ 2^31-1=2147483647, so, when res=
+     * Integer.MAX_VALUE / 10, the msb of the input number must be 0, 1, 2.
+     */
     class Solution {
+
         public int reverse(int x) {
-            int i = x % 10;
-            return i;
+            int res = 0;
+            while (x != 0) {
+                if (res > Integer.MAX_VALUE / 10 || res < Integer.MIN_VALUE / 10) {
+                    return 0;
+                }
+                res = res * 10 + x % 10;
+                x = x / 10;
+            }
+            return res;
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)
 
+    public class SolutionV2 {
+
+        public int reverse(int x) {
+            int res = 0;
+            while (x != 0) {
+                if (res * 10 / 10 != res) {
+                    return 0;
+                }
+                res = res * 10 + x % 10;
+                x = x / 10;
+            }
+            return res;
+        }
+    }
 }
