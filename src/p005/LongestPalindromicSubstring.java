@@ -23,7 +23,7 @@ public class LongestPalindromicSubstring {
 
     // leetcode submit region begin(Prohibit modification and deletion)
     /**
-     * longest commont sub string
+     * expand around center sub string
      * 
      */
     class Solution {
@@ -42,10 +42,11 @@ public class LongestPalindromicSubstring {
                     end = i + maxLen / 2;
                 }
             }
+            // substring(i,j) -> [i,j), include i , not j
             return s.substring(start, end + 1);
         }
 
-        /** return the length of palindrom */
+        /** return the length of palindrome */
         private int expandAroundCenter(String s, int left, int right) {
             while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
                 left--;
@@ -55,5 +56,41 @@ public class LongestPalindromicSubstring {
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)
+
+    /**
+     * SolutionV2
+     * 
+     * brute force
+     */
+    public class SolutionV2 {
+
+        public String longestPalindrome(String s) {
+            if (s == null || s.length() < 1) {
+                return "";
+            }
+            int maxLen = 0;
+            int start = 0, end = 0;
+            for (int i = 0; i < s.length(); i++) {
+                for (int j = 1; j < s.length() + 1; j++) {
+                    if (maxLen < j - i && isPalindromic(s.substring(i, j))) {
+                        maxLen = j - i;
+                        start = i;
+                        end = j;
+                    }
+                }
+            }
+            return s.substring(start, end);
+        }
+
+        private boolean isPalindromic(String s) {
+            int len = s.length();
+            for (int i = 0; i < len / 2; i++) {
+                if (s.charAt(i) != s.charAt(len - i - 1)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
 
 }
