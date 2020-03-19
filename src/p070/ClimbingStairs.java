@@ -70,4 +70,29 @@ public class ClimbingStairs {
             return steps[n];
         }
     }
+
+    /**
+     * SolutionV3
+     * <p>
+     * dynamic programming, space optimized
+     */
+    public class SolutionV3 {
+
+        public int climbStairs(int n) {
+            if (n < 3) {
+                return n;
+            }
+
+            int x = 1;
+            int y = 2;
+            int z = 3;
+
+            for (int i = 3; i <= n; i++) {
+                z = y + x;
+                x = y;
+                y = z;
+            }
+            return z;
+        }
+    }
 }
