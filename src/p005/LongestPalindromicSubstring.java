@@ -34,6 +34,8 @@ public class LongestPalindromicSubstring {
 
             int start = 0, end = 0;
             for (int i = 0; i < s.length(); i++) {
+                // 1、如果传入重合的索引编码，进行中心扩散，此时得到的回文子串的长度是奇数；
+                // 2、如果传入相邻的索引编码，进行中心扩散，此时得到的回文子串的长度是偶数。
                 int len1 = expandAroundCenter(s, i, i);
                 int len2 = expandAroundCenter(s, i, i + 1);
                 int maxLen = Math.max(len1, len2);
@@ -90,6 +92,47 @@ public class LongestPalindromicSubstring {
                 }
             }
             return true;
+        }
+    }
+
+    /**
+     * SolutionV3
+     * 
+     * dynamic programming
+     * 
+     * similar to the previous brute force method, but using space to exchange for
+     * time;
+     */
+    public class SolutionV3 {
+        public String longestPalindrome(String s) {
+            if (s.length() < 2) {
+                return s;
+            }
+            int len = s.length();
+            int maxLen = 0;
+            int start = 0;
+            boolean[][] dp = new boolean[len][len];
+
+            for (int j = 0; j < len; j++) { // 状态转移顺序决定此处填表顺序
+                for (int i = 0; i <= j; i++) {
+                    if (s.charAt(i) == s.charAt(j)) {
+                        if (j - i < 2) {
+                            dp[i][j] = true;
+                        } else {
+                            dp[i][j] = dp[i + 1][j - 1];
+                        }
+                    } else {
+                        dp[i][j] = false;
+                    }
+                    if (dp[i][j]) {
+                        if (maxLen < j - i + 1) {
+                            maxLen = j - i + 1;
+                            start = i;
+                        }
+                    }
+                }
+            }
+            return s.substring(start, start + maxLen);
         }
     }
 
