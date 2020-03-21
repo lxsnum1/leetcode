@@ -1,5 +1,7 @@
 package p213;
 
+import java.util.Arrays;
+
 //你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都围成一圈，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋
 //装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 
 //
@@ -29,9 +31,31 @@ public class HouseRobber2 {
     // leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int rob(int[] nums) {
-            return 0;
+            if (nums.length == 0) {
+                return 0;
+            }
+            if (nums.length == 1) {
+                return nums[0];
+            }
+            int[] a = Arrays.copyOfRange(nums, 0, nums.length - 1);
+            int[] b = Arrays.copyOfRange(nums, 1, nums.length);
+
+            return Math.max(robHelper(a), robHelper(b));
         }
+
+        private int robHelper(int[] nums) {
+            int prevMax = 0;
+            int currMax = 0;
+            for (int x : nums) {
+                int oldMax = currMax;
+                currMax = Math.max(prevMax + x, currMax);
+                prevMax = oldMax;
+            }
+            return currMax;
+        }
+
     }
+
     // leetcode submit region end(Prohibit modification and deletion)
 
 }
