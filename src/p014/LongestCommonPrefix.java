@@ -92,5 +92,12 @@ public class LongestCommonPrefix {
      */
     public class SolutionV3 {
 
+        public String longestCommonPrefix(String[] strs) {
+            if (strs == null || strs.length == 0) {
+                return "";
+            }
+
+            return null;
+        }
     }
 }
