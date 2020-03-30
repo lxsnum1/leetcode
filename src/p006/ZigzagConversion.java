@@ -42,7 +42,6 @@ public class ZigzagConversion {
         Solution solution = new ZigzagConversion().new Solution();
     }
 
-    // leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String convert(String s, int numRows) {
             if (numRows < 2) {
@@ -70,5 +69,4 @@ public class ZigzagConversion {
             return rows.get(0).toString();
         }
     }
-    // leetcode submit region end(Prohibit modification and deletion)
 }

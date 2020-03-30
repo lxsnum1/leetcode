@@ -19,8 +19,6 @@ public class AddTwoNumbers {
         Solution solution = new AddTwoNumbers().new Solution();
     }
 
-    // leetcode submit region begin(Prohibit modification and deletion)
-
     /**
      * Definition for singly-linked list.
      */
@@ -53,7 +51,6 @@ public class AddTwoNumbers {
             return result;
         }
     }
-    // leetcode submit region end(Prohibit modification and deletion)
 
     class SolutionV2 {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

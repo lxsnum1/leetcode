@@ -28,7 +28,6 @@ public class MedianOfTwoSortedArrays {
         Solution solution = new MedianOfTwoSortedArrays().new Solution();
     }
 
-    // leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public double findMedianSortedArrays(int[] nums1, int[] nums2) {
             int len1 = nums1.length;
@@ -61,7 +60,7 @@ public class MedianOfTwoSortedArrays {
             }
         }
     }
-    // leetcode submit region end(Prohibit modification and deletion)
+
     /*
      * 1.首先，让我们在任一位置 i 将 A(长度为m) 划分成两个部分： leftA | rightA A[0],A[1],... A[i-1] |
      * A[i],A[i+1],...A[m - 1]
