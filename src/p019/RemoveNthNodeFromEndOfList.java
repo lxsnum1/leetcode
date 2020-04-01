@@ -25,8 +25,6 @@ public class RemoveNthNodeFromEndOfList {
         Solution solution = new RemoveNthNodeFromEndOfList().new Solution();
     }
 
-    // leetcode submit region begin(Prohibit modification and deletion)
-
     /**
      * Definition for singly-linked list.
      */
@@ -41,10 +39,22 @@ public class RemoveNthNodeFromEndOfList {
 
     class Solution {
         public ListNode removeNthFromEnd(ListNode head, int n) {
-            return head;
+            ListNode sentinel = new ListNode(0);
+            sentinel.next = head;
+            ListNode fast = sentinel, slow = sentinel;
 
+            while (n != 0) {
+                fast = fast.next;
+                n--;
+            }
+
+            while (fast.next != null) {
+                fast = fast.next;
+                slow = slow.next;
+            }
+            slow.next = slow.next.next;
+            return sentinel.next;
         }
     }
-    // leetcode submit region end(Prohibit modification and deletion)
 
 }
