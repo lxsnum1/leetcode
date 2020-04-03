@@ -1,7 +1,6 @@
 package p024;
 
-//给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 
-//
+// 给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。 
 // 你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。 
 //
 // 
@@ -32,8 +31,17 @@ public class SwapNodesInPairs {
 
     class Solution {
         public ListNode swapPairs(ListNode head) {
-            return head;
+            if (head == null || head.next == null) {
+                return head;
+            }
 
+            ListNode a = head;
+            ListNode b = a.next;
+            if (b != null) {
+                a.next = swapPairs(b.next);
+                b.next = a;
+            }
+            return b;
         }
     }
 
