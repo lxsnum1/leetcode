@@ -26,32 +26,24 @@ public class GenerateParentheses {
 
     class Solution {
         public List<String> generateParenthesis(int n) {
-            if (n < 1) {
-                return Arrays.asList("");
-            }
-            if (n == 1) {
-                return Arrays.asList("()");
-            }
-
-            LinkedList<String> list = new LinkedList<>();
-            for (String string : generateParenthesis(n - 1)) {
-                list.add("(" + string + ")");
-                list.add("()" + string);
-                list.add(string + "()");
-            }
-            list.removeLast();
-            return list;
+            List<String> ans = new LinkedList<>();
+            backtrack(ans, "", 0, 0, n);
+            return ans;
         }
 
-        private List<String> findCombiantion(int n, List<String> currList) {
-            List<String> newList = new LinkedList<>();
-            for (String string : currList) {
-                newList.add("(" + string + ")");
-                newList.add("()" + string);
-                newList.add(string + ")");
+        private void backtrack(List<String> ans, String cur, int open, int close, int n) {
+
+            if (open == n && close == n) {
+                ans.add(cur);
+                return;
             }
-            currList.remove(currList.size() - 1);
-            return currList;
+
+            if (open < n) { // key point: you can add '(' when open < n
+                backtrack(ans, cur + '(', open + 1, close, n);
+            }
+            if (close < open) { // key point: you can add ')' when close < n
+                backtrack(ans, cur + ')', open, close + 1, n);
+            }
         }
     }
 
