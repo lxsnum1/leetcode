@@ -12,26 +12,57 @@ package p153;
 // 示例 1: 
 //
 // 输入: [3,4,5,1,2]
-//输出: 1 
+// 输出: 1 
 //
 // 示例 2: 
 //
 // 输入: [4,5,6,7,0,1,2]
-//输出: 0 
+// 输出: 0 
 // Related Topics 数组 二分查找
 
+/**
+ * important: 此揭发不适用于数组中存在重复元素
+ * 
+ * eg: nums[lo] = nums[mid] = nums[hi]
+ */
 public class FindMinimumInRotatedSortedArray {
 
     public static void main(String[] args) {
         Solution solution = new FindMinimumInRotatedSortedArray().new Solution();
     }
 
-    // leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int findMin(int[] nums) {
+            int lo = 0, hi = nums.length - 1, mid = 0;
 
+            while (nums[lo] > nums[hi]) {
+                mid = lo + (hi - lo) / 2; // 地板除，mid更靠近left
+                if (nums[mid] >= nums[lo]) {
+                    lo = mid + 1;
+                } else {
+                    hi = mid;
+                }
+            }
+            return nums[lo];
         }
     }
-    // leetcode submit region end(Prohibit modification and deletion)
 
+    /**
+     * SolutionV2
+     */
+    public class SolutionV2 {
+
+        public int findMin(int[] nums) {
+            int lo = 0, hi = nums.length - 1;
+            while (lo < hi) {
+                int mid = lo + (hi - lo) / 2;
+                if (nums[mid] < nums[hi]) {
+                    hi = mid;
+                } else {
+                    lo = mid + 1;
+                }
+            }
+            return nums[lo];
+        }
+    }
 }
