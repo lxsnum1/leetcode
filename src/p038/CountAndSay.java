@@ -43,6 +43,7 @@ public class CountAndSay {
     class Solution {
         public String countAndSay(int n) {
 
+            return null;
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)

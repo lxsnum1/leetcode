@@ -33,6 +33,8 @@ package p040;
 //] 
 // Related Topics 数组 回溯算法
 
+import java.util.List;
+
 public class CombinationSumIi {
 
     public static void main(String[] args) {
@@ -43,6 +45,7 @@ public class CombinationSumIi {
     class Solution {
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
 
+            return null;
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)

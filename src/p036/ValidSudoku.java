@@ -65,12 +65,17 @@ public class ValidSudoku {
         Solution solution = new ValidSudoku().new Solution();
     }
 
-    // leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public boolean isValidSudoku(char[][] board) {
+            if (board == null) {
+                return false;
+            }
 
+            for (int i = 0; i < board.length; i++) {
+                System.out.println(board[i][0]);
+            }
+            return false;
         }
     }
-    // leetcode submit region end(Prohibit modification and deletion)
 
 }

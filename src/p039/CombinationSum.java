@@ -32,6 +32,8 @@ package p039;
 //] 
 // Related Topics 数组 回溯算法
 
+import java.util.List;
+
 public class CombinationSum {
 
     public static void main(String[] args) {
@@ -42,6 +44,7 @@ public class CombinationSum {
     class Solution {
         public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
+            return null;
         }
     }
     // leetcode submit region end(Prohibit modification and deletion)
